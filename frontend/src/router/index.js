@@ -2,20 +2,22 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Home from '../views/Home.vue'
-import Product from '../views/Product.vue'  
-import Products from '../views/Products.vue'  
+import Products from '../views/Products.vue' 
+import Cart from '../views/Cart.vue'  
+
 
 import dashboard from '../views/adminDashboard.vue'
 
 const routes = [
   {
     path: '/',
-    component: Home  // "/" reste Home, visible même sans token
+    component: Home  
   },
   { path: '/login', component: Login },
   { path: '/register', component: Register },
   { path: '/products', component: Products },
-  { path: '/product', component: Product ,meta: { hideSidebar: true }},
+  { path: '/Cart', component: Cart },
+
 
  
    {
@@ -30,16 +32,13 @@ const router = createRouter({
   routes
 })
 
-// Middleware : protéger certaines routes sauf "/"
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token')
 
-  // Protection pour toutes les pages sauf login, register et "/"
-  if (!token && to.path !== '/login' && to.path !== '/register' && to.path !== '/' && to.path !== '/dashboard' && to.path !== '/products' && to.path !== '/product') {
+  if (!token && to.path !== '/login' && to.path !== '/register' && to.path !== '/' && to.path !== '/dashboard' && to.path !== '/products' && to.path !== '/Cart' ) {
     return next('/login')
   }
 
-  // Empêche un utilisateur connecté d'aller sur login/register
   if (token && (to.path === '/login' || to.path === '/register')) {
     return next('/')
   }

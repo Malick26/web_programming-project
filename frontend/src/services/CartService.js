@@ -4,14 +4,13 @@ import { ref } from "vue";
 const CART_KEY = "cart";
 const cart = ref(JSON.parse(localStorage.getItem(CART_KEY)) || []);
 
-// fonction pour mettre à jour le localStorage
 function saveCart() {
   localStorage.setItem(CART_KEY, JSON.stringify(cart.value));
 }
 
 export default {
   getCart: () => cart.value,
-  getCartRef: () => cart, // expose le ref pour les computed
+  getCartRef: () => cart, 
   getCartLength: () => cart.value.reduce((total, item) => total + item.quantity, 0),
 
   addToCart(product) {

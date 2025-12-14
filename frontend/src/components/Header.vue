@@ -36,14 +36,16 @@
 
       <!-- Actions (Cart, User) -->
       <div class="actions-section">
-        <button class="cart-btn" @click="toggleCart">
-          <svg class="cart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-          </svg>
+        <router-link to="/Cart" class="cart-link">
+          <button class="cart-btn">
+            <svg class="cart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
             <span class="cart-count" v-if="cartCount > 0">{{ cartCount }}</span>
-        </button>
+          </button>
+        </router-link>
         
         <button class="user-btn" @click="toggleUserMenu">
           <svg class="user-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -57,17 +59,46 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
 import cartService from "../services/cartService.js";
 
-// utilise getCartRef() pour récupérer le ref réactif
-const cartCount = computed(() => {
+const cartCount = ref(0);
+
+// Calcul initial
+const updateCartCount = () => {
+  cartCount.value = cartService.getCartLength();
+};
+
+// Écouter l'événement de mise à jour du panier
+const handleCartUpdate = (event) => {
+  if (event && event.detail && event.detail.cartLength !== undefined) {
+    cartCount.value = event.detail.cartLength;
+  } else {
+    // Fallback si l'événement n'a pas de détail
+    updateCartCount();
+  }
+};
+
+// Utiliser computed pour réagir aux changements du panier
+const reactiveCartCount = computed(() => {
   const cartRef = cartService.getCartRef();
   return cartRef.value.reduce((total, item) => total + item.quantity, 0);
 });
 
+// Observer le computed pour mettre à jour la ref
+import { watch } from 'vue';
+watch(reactiveCartCount, (newValue) => {
+  cartCount.value = newValue;
+});
 
+onMounted(() => {
+  updateCartCount();
+  window.addEventListener('cart-updated', handleCartUpdate);
+});
 
+onUnmounted(() => {
+  window.removeEventListener('cart-updated', handleCartUpdate);
+});
 </script>
 
 <style scoped>
@@ -154,6 +185,12 @@ const cartCount = computed(() => {
   display: flex;
   justify-content: flex-end;
   gap: 15px;
+  align-items: center;
+}
+
+.cart-link {
+  text-decoration: none;
+  display: inline-block;
 }
 
 .cart-btn, .user-btn {
@@ -164,6 +201,9 @@ const cartCount = computed(() => {
   padding: 8px;
   border-radius: 8px;
   transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cart-btn:hover, .user-btn:hover {
@@ -176,18 +216,19 @@ const cartCount = computed(() => {
 
 .cart-count {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -5px;
+  right: -5px;
   background: #ef4444;
   color: white;
   font-size: 12px;
   font-weight: 600;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid white;
 }
 
 /* Responsive */
