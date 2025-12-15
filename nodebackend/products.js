@@ -122,13 +122,11 @@ router.get("/products/category/:category_id", (req, res) => {
     const { category_id } = req.params;
     const db = loadDB();
 
-    // Vérifier si la catégorie existe
     const category = db.categories.find(c => c.id == category_id);
     if (!category) {
         return res.status(404).json({ error: "Category not found" });
     }
 
-    // Récupérer produits de cette catégorie
     const products = db.catalogue.filter(p => p.category_id == category_id);
 
     res.json({

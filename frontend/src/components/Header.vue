@@ -1,14 +1,12 @@
 <template>
   <header class="header">
     <div class="header-container">
-      <!-- Logo -->
       <div class="logo-section">
         <router-link to="/" class="logo-link">
           <h1 class="logo">ShopVue</h1>
         </router-link>
       </div>
 
-      <!-- Navigation -->
       <nav class="nav-section">
         <ul class="nav-list">
           <li class="nav-item">
@@ -34,7 +32,6 @@
         </ul>
       </nav>
 
-      <!-- Actions (Cart, User) -->
       <div class="actions-section">
         <router-link to="/Cart" class="cart-link">
           <button class="cart-btn">
@@ -47,7 +44,7 @@
           </button>
         </router-link>
         
-        <button class="user-btn" @click="toggleUserMenu">
+        <button class="user-btn" @click="openProfile" >
           <svg class="user-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
             <circle cx="12" cy="7" r="4"></circle>
@@ -60,9 +57,21 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from "vue";
+import { useRouter } from "vue-router";
 import cartService from "../services/cartService.js";
 
+const router = useRouter();
+
 const cartCount = ref(0);
+
+const toggleUserMenu = () => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    router.push('/profile');
+  } else {
+    router.push('/login');
+  }
+};
 
 // Calcul initial
 const updateCartCount = () => {
@@ -74,18 +83,15 @@ const handleCartUpdate = (event) => {
   if (event && event.detail && event.detail.cartLength !== undefined) {
     cartCount.value = event.detail.cartLength;
   } else {
-    // Fallback si l'événement n'a pas de détail
     updateCartCount();
   }
 };
 
-// Utiliser computed pour réagir aux changements du panier
 const reactiveCartCount = computed(() => {
   const cartRef = cartService.getCartRef();
   return cartRef.value.reduce((total, item) => total + item.quantity, 0);
 });
 
-// Observer le computed pour mettre à jour la ref
 import { watch } from 'vue';
 watch(reactiveCartCount, (newValue) => {
   cartCount.value = newValue;
@@ -99,6 +105,10 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('cart-updated', handleCartUpdate);
 });
+
+const openProfile = () => {
+  alert('We just work on it. It will be available soon!')
+}
 </script>
 
 <style scoped>
@@ -124,7 +134,6 @@ onUnmounted(() => {
   justify-content: space-between;
 }
 
-/* Logo */
 .logo-section {
   flex: 1;
 }
@@ -143,7 +152,6 @@ onUnmounted(() => {
   margin: 0;
 }
 
-/* Navigation */
 .nav-section {
   flex: 2;
   display: flex;
@@ -179,7 +187,6 @@ onUnmounted(() => {
   font-weight: 600;
 }
 
-/* Actions */
 .actions-section {
   flex: 1;
   display: flex;
@@ -231,7 +238,6 @@ onUnmounted(() => {
   border: 2px solid white;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .header-container {
     padding: 0 15px;

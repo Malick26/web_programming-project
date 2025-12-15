@@ -3,7 +3,6 @@
     <!-- Header -->
     <Header />   
   <div class="page-container">
-    <!-- Products grid - DOIT ÊTRE AVANT la sidebar pour le flux naturel -->
     <div class="products-grid">
       <div 
         v-for="product in filteredProducts" 
@@ -36,7 +35,6 @@
       </div>
     </div>
 
-    <!-- Filters sidebar - DOIT ÊTRE APRÈS pour le positionnement fixed -->
     <div class="filters-sidebar">
       <h1 class="filter-title">Filter</h1>
       <div class="filter-section">
@@ -76,7 +74,6 @@
       </div>
     </div>
 
-    <!-- Modal -->
     <Product_Modal 
       v-if="selectedProduct"
       :revele="modalVisible"
@@ -339,7 +336,7 @@ import cartService from "../services/cartService.js";
 import axios from "axios";
 
 function addToCart(product) {
-  cartService.addToCart(product); // Met à jour localStorage ET notifie les listeners
+  cartService.addToCart(product); 
   console.log("Cart updated:", cartService.getCart());
 }
 

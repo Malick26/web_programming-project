@@ -84,7 +84,6 @@
                 <span class="summary-value">${{ total }}</span>
               </div>
 
-              <!-- Code promo -->
               <div class="promo-section">
                 <div class="promo-input">
                   <input 
@@ -100,7 +99,7 @@
                 </p>
               </div>
 
-              <button class="checkout-btn">
+              <button class="checkout-btn" @click="router.push('/checkout')">
                 Go to Checkout →
               </button>
             </div>

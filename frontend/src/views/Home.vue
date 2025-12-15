@@ -116,14 +116,13 @@
       </div>
     </section>
 
-    <!-- For You Section avec social proof -->
     <section class="for-you-section">
       <div class="section-intro">
         <h2>❤️ Recommended Just For You</h2>
         <p class="section-subtitle">Based on your browsing history and popular choices among similar gamers. These titles are guaranteed to keep you on the edge of your seat!</p>
       </div>
       
-      <div class="recommended-grid">
+    <!--  <div class="recommended-grid">
         <div class="recommended-card" v-for="product in recommendedProducts" :key="product.id">
           <div class="recommended-image">
             <img :src="product.image || 'https://via.placeholder.com/350x200'" :alt="product.name">
@@ -161,14 +160,14 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       
       <div class="testimonial">
         <div class="testimonial-content">
           "I've purchased 12 games from ShopVue this year alone. The selection is incredible and the prices beat every other store!"
         </div>
         <div class="testimonial-author">
-          <img src="" alt="User" class="author-avatar">
+          <img src="../assets/img/cynthia.jfif" alt="User" class="author-avatar">
           <div class="author-info">
             <strong>Alex Chen</strong>
             <span>Professional Streamer • 50K followers</span>
@@ -177,7 +176,6 @@
       </div>
     </section>
 
-    <!-- Value Proposition Section -->
     <section class="value-section">
       <h2>Why Gamers Choose ShopVue</h2>
       <div class="value-grid">
@@ -204,7 +202,6 @@
       </div>
     </section>
 
-    <!-- Newsletter avec offre spéciale -->
     <section class="newsletter-section">
       <div class="newsletter-content">
         <div class="newsletter-offer">
@@ -240,7 +237,6 @@
       </div>
     </section>
 
-    <!-- Final CTA -->
     <section class="final-cta">
       <div class="cta-content">
         <h2>Ready to Level Up Your Game Collection?</h2>
@@ -273,7 +269,6 @@ const categories = ref([])
 const products = ref([])
 const loading = ref(true)
 
-// Charger les données
 const loadData = async () => {
   try {
     loading.value = true
@@ -285,7 +280,6 @@ const loadData = async () => {
     products.value = productsData
   } catch (error) {
     console.error('Error loading data:', error)
-    // Données de secours
     categories.value = [
       { id: 1, name: "Action" },
       { id: 2, name: "RPG" },
@@ -307,23 +301,19 @@ const loadData = async () => {
   }
 }
 
-// Jeux en vedette (4 premiers)
 const featuredProducts = computed(() => {
-  return products.value.slice(0, 4)
+  return products.value.slice(0, 3)
 })
 
-// Produits recommandés (les 3 suivants)
 const recommendedProducts = computed(() => {
-  return products.value.slice(4, 7)
+  return products.value.slice(3, 6)
 })
 
-// Obtenir le nom de la catégorie
 const getCategoryName = (categoryId) => {
   const category = categories.value.find(c => c.id === categoryId)
   return category ? category.name : 'Unknown'
 }
 
-// Obtenir l'icône de la catégorie
 const getCategoryIcon = (categoryName) => {
   const icons = {
     'Action': '⚔️',
@@ -340,7 +330,6 @@ const getCategoryIcon = (categoryName) => {
   return icons[categoryName] || '🎮'
 }
 
-// Description des catégories
 const getCategoryDescription = (categoryName) => {
   const descriptions = {
     'Action': 'Fast-paced combat and adrenaline-fueled gameplay',
@@ -353,7 +342,6 @@ const getCategoryDescription = (categoryName) => {
   return descriptions[categoryName] || 'Amazing games await'
 }
 
-// Description des jeux
 const getGameDescription = (gameName) => {
   const descriptions = {
     'Cyberpunk Odyssey': 'A groundbreaking open-world RPG set in a dystopian future',
@@ -366,7 +354,6 @@ const getGameDescription = (gameName) => {
   return descriptions[gameName] || 'An incredible gaming experience awaits'
 }
 
-// Compter les produits par catégorie
 const getProductCount = (categoryId) => {
   return products.value.filter(p => p.category_id === categoryId).length
 }

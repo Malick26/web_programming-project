@@ -58,7 +58,7 @@
       "views": 0,
       "created_at": 1765372202599,
       "images": [
-        "cod_cover.jpg",
+        "https://imgs.search.brave.com/YDnh4UwtY2oiHHldu9b1kIYRS3s001D-5-a5zjgRZgg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4x/LmVwaWNnYW1lcy5j/b20vc3B0LWFzc2V0/cy9kOGFiODFjMzk2/YzU0MDIyOGRiYmZk/ZmJmZjMzNjljNi9h/c3BoYWx0LWxlZ2Vu/ZHMtMXZ0MG8uanBn/P3Jlc2l6ZT0xJnc9/NDgwJmg9MjcwJnF1/YWxpdHk9bWVkaXVt",
         "cod_screen.jpg"
       ]
     },
@@ -73,7 +73,52 @@
       "views": 0,
       "created_at": 1765472202599,
       "images": [
-        "forza_cover.jpg",
+        "https://imgs.search.brave.com/0ANbMFbTD-U7ZABsIzmCnMrjSCQDQTiDJphHhy00UCE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aV93/ZWJwL0psUHB0ZEVz/VEhBL21heHJlc2Rl/ZmF1bHQud2VicA",
+        "forza_screen.jpg"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Call of Duty: Modern Warfare",
+      "description": "FPS intense avec mode solo et multi.",
+      "price": 39.99,
+      "category_id": 1,
+      "stock": 48,
+      "likes": 0,
+      "views": 0,
+      "created_at": 1764773252277,
+      "images": [
+        "https://imgs.search.brave.com/zvvM8NB5Z6KjasXHy708WNIe5qhQdQk30A-uEWy8Cr4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/bHVkdW0uZnIvbW9k/dWxlcy9waF9zaW1w/bGVibG9nL2NvdmVy/cy8xMzg0LXRodW1i/LmpwZWc",
+        "https://imgs.search.brave.com/zvvM8NB5Z6KjasXHy708WNIe5qhQdQk30A-uEWy8Cr4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/bHVkdW0uZnIvbW9k/dWxlcy9waF9zaW1w/bGVibG9nL2NvdmVy/cy8xMzg0LXRodW1i/LmpwZWc"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Call of Duty: Modern Warfare",
+      "description": "FPS intense avec mode solo et multi.",
+      "price": 59.99,
+      "category_id": 1,
+      "stock": 50,
+      "likes": 0,
+      "views": 0,
+      "created_at": 1765372202599,
+      "images": [
+        "https://imgs.search.brave.com/YDnh4UwtY2oiHHldu9b1kIYRS3s001D-5-a5zjgRZgg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4x/LmVwaWNnYW1lcy5j/b20vc3B0LWFzc2V0/cy9kOGFiODFjMzk2/YzU0MDIyOGRiYmZk/ZmJmZjMzNjljNi9h/c3BoYWx0LWxlZ2Vu/ZHMtMXZ0MG8uanBn/P3Jlc2l6ZT0xJnc9/NDgwJmg9MjcwJnF1/YWxpdHk9bWVkaXVt",
+        "cod_screen.jpg"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Forza Horizon 5",
+      "description": "Jeu de course en monde ouvert au Mexique.",
+      "price": 49.99,
+      "category_id": 2,
+      "stock": 30,
+      "likes": 0,
+      "views": 0,
+      "created_at": 1765472202599,
+      "images": [
+        "https://imgs.search.brave.com/0ANbMFbTD-U7ZABsIzmCnMrjSCQDQTiDJphHhy00UCE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aV93/ZWJwL0psUHB0ZEVz/VEhBL21heHJlc2Rl/ZmF1bHQud2VicA",
         "forza_screen.jpg"
       ]
     }
@@ -165,6 +210,16 @@
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJjeW50aGlhQGV4YW1wbGUuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NjU2ODcyNTMsImV4cCI6MTc2NjI5MjA1M30.yJsyjxh4ZfIp-tpmdvCTHO-vczBHah8ELWQhitW406A",
       "user_id": 2,
       "expires": 1766292053642
+    },
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJjeW50aGlhQGV4YW1wbGUuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NjU3OTcwOTgsImV4cCI6MTc2NjQwMTg5OH0.edH0k8y_k7vMcXoVVDAWXVkT6DaRiaNw1B7hpJTsdoA",
+      "user_id": 2,
+      "expires": 1766401898068
+    },
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJjeW50aGlhQGV4YW1wbGUuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NjU3OTc2OTEsImV4cCI6MTc2NjQwMjQ5MX0.qLvbElPGavA2BtlBWKdEsMh5PJpjUaAYcDzV1XZqo7o",
+      "user_id": 2,
+      "expires": 1766402491938
     }
   ],
   "stats": {
